@@ -1,11 +1,18 @@
+const parseArgs = require('minimist')
+const options = {
+	default: { puerto: 8080 },
+	alias: { p: 'puerto' }
+}
+const argumentos = parseArgs(process.argv.slice(2),options)
+
 const express = require("express");
 const path = require("path");
 const session = require('express-session')
 const passport = require("passport")
 
 const app = express();
-const PORT = process.env.PORT || 8080;
-
+// const PORT = process.env.PORT || 8080;
+const PORT = argumentos.puerto
 //sessions
 app.use(session({
 	cookie: {
