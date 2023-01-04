@@ -45,6 +45,10 @@ const logout = require("./src/routes/logout")
 app.use("/api/logout", logout)
 const register = require("./src/routes/register")
 app.use("/api/register", register)
+const info = require("./src/routes/info")
+app.use("/api/info", info)
+const random = require("./src/routes/random")
+app.use("/api/random", random)
 
 //Servidor HTTP
 const http = require("http");
