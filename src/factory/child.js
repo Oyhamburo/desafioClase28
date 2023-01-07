@@ -1,6 +1,6 @@
 const random = require('../funciones/random.js');
 let numeros = []
-let cant = 100000000
+let cant = 1000000
 for (let i = 0; i < cant; i++) {
     let randomNum = random()
     if (numeros.length === 0) {

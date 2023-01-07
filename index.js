@@ -1,18 +1,21 @@
-const parseArgs = require('minimist')
-const options = {
-	default: { puerto: 8080 },
-	alias: { p: 'puerto' }
-}
-const argumentos = parseArgs(process.argv.slice(2),options)
-
 const express = require("express");
+const cluster = require('cluster')
+const cpus = require('os').cpus()
 const path = require("path");
 const session = require('express-session')
 const passport = require("passport")
+const minimist = require('minimist')
 
+const options = {
+	alias: {
+		"p": "PORT"
+	},
+	default: {
+		"PORT": 8081
+	}
+};
+const { PORT } = minimist(process.argv.slice(2), options);
 const app = express();
-// const PORT = process.env.PORT || 8080;
-const PORT = argumentos.puerto
 //sessions
 app.use(session({
 	cookie: {
@@ -69,7 +72,17 @@ io.on("connection", (socket) => {
 
 
 //Comienzo Servidor
-server.listen(PORT, () => {
-	console.log(`Server is run on port ${server.address().port}`)
-})
+if (cluster.isPrimary) {
+	const lengthCpu = cpus.length
+	for (let index = 0; index < lengthCpu; index++) {
+		cluster.fork()
+	}
+} else {
+	server.listen(PORT, () => {
+		console.log(`Server is run on port ${server.address().port}`)
+	})
+}
+// server.listen(PORT, () => {
+// 	console.log(`Server is run on port ${server.address().port}`)
+// })
 server.on('error', error => console.log(`Error en servidor ${error}`))

@@ -10,6 +10,7 @@ const {
 const router = new Router();
 
 router.get("/", (req, res) => {
+    console.log(` PID (${process.pid})`)
     const child = fork('./src/factory/child.js');
     child.on('message', msg => {
         if (msg == 'ready') {
