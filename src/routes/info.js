@@ -2,8 +2,11 @@ const express = require("express")
 const parseArgs = require('minimist')
 const {exec} = require('child_process')
 const cpus=require('os').cpus()
+const compression = require('compression')
 
-
+// const path = require('path')
+// const root = path.join(__dirname,'info.js')
+// console.log("JS CLASICO: ",root)
 
 const app = express();
 const {
@@ -12,7 +15,7 @@ const {
 const router = new Router();
 
 //GET DEL LOGIN
-router.get("/", (req, res) => {
+router.get("/",compression(), (req, res) => {
 
     let data = `<ul>
     <p>Nombre de la plataforma: <strong>${process.platform}</strong></p>
@@ -23,6 +26,8 @@ router.get("/", (req, res) => {
     <p>Cantidad de nucleos: <strong>${cpus.length}</strong></p> 
     </ul>
     `
+
+    // console.log(data)
     res.send(data)
 })
 
