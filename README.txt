@@ -118,6 +118,13 @@ Benchmark
 
     11k requests in 20.13s, 7.09 MB read
 
+
+0x Diagrama
+C:\Users\Jelee\Desktop\codigos\Nueva carpeta\clase30\desafioClase28\20488.0x\flamegraph.html
+
 Conclusion
     Todas las pruebas realizadas nos indican que en el caso que logueamos por consola la respuesta antes de ser enviada el tiempo de respuesta es mayor y que en el mismo tiempo,
      se pueden manejar menos requests.
+
+
+    
