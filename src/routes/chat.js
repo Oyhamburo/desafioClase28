@@ -1,7 +1,7 @@
 const express = require("express");
-const {
-    reset
-} = require("nodemon");
+// const {
+//     reset
+// } = require("nodemon");
 const Contenedor = require("../daos/chat/ChatDaoFirebase");
 const {
     normalize,
