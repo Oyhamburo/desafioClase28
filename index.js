@@ -80,24 +80,24 @@ io.on("connection", (socket) => {
 
 
 
-//Comienzo Servidor
-// if (MODO === "CLUSTER" && cluster.isPrimary) {
-// 	const lengthCpu = cpus.length
-// 	for (let index = 0; index < lengthCpu; index++) {
-// 		cluster.fork()
-// 	}
-// } else {
-// 	// server.listen(PORT, () => {
-// 	// 	console.log(`Server is run on port ${server.address().port}`)
-// 	// })
+// Comienzo Servidor
+if (MODO === "CLUSTER" && cluster.isPrimary) {
+	const lengthCpu = cpus.length
+	for (let index = 0; index < lengthCpu; index++) {
+		cluster.fork()
+	}
+} else {
+	// server.listen(PORT, () => {
+	// 	console.log(`Server is run on port ${server.address().port}`)
+	// })
 	
-// 	const server = app.listen(PORT, () => {
-// 		logger.info(`🚀 Server is run on port ${server.address().port}`)
-// 	})
-// }
-server.listen(PORT, () => {
-	console.log(`Server is run on port ${server.address().port}`)
-})
+	const server = app.listen(PORT, () => {
+		logger.info(`🚀 Server is run on port ${server.address().port}`)
+	})
+}
+// server.listen(PORT, () => {
+// 	console.log(`Server is run on port ${server.address().port}`)
+// })
 server.on('error', error => console.log(`Error en servidor ${error}`))
 server.on('error', (err) => logger.error(err));
 
