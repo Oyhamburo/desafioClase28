@@ -5,11 +5,19 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oyhamburo/desafioCoderBack.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oyhamburo/desafioCoderBack/issues"
+  },
+  "homepage": "https://github.com/Oyhamburo/desafioCoderBack#readme",
   "dependencies": {
     "@faker-js/faker": "^6.1.2",
     "autocannon": "^7.10.0",
